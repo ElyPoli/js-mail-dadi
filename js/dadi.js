@@ -7,16 +7,34 @@ BONUS: far inserire 3 numeri all’utente, generare per il pc 3 numeri, e dopo a
 */
 
 // Dichiaro variabili
-const userNumber = Math.floor(Math.random() * (6 - 1)) + 1;
-const pcNumber = Math.floor(Math.random() * (6 - 1)) + 1;
+let pcNumberSum = 0;
+let userNumberSum = 0;
 
-console.log("numero utente " + userNumber);
-console.log("numero pc " + pcNumber);
+// Genero i tre numeri
+for (let i = 1; i <= 3; i++) {
+
+    // Chiedo i numeri all'utente
+    const userNumber = parseInt(prompt("Inserisci il " + i + " numero da 1 a 6"));
+    if (isNaN(userNumber) || userNumber < 1 || userNumber > 6) {
+        alert("Inserisci un numero corretto");
+        i--;
+    } else {
+        userNumberSum = userNumberSum + userNumber;
+    }
+
+    // Genero i tre numeri del computer
+    const pcNumber = Math.floor(Math.random() * (6 - 1)) + 1;
+    pcNumberSum = pcNumberSum + pcNumber;
+}
+
+console.log("numero utente " + userNumberSum);
+console.log("numero pc " + pcNumberSum);
+
 
 // Confronto i due numeri per stabilire il vincitore
-if (userNumber > pcNumber) {
+if (userNumberSum > pcNumberSum) {
     console.log("Ha vinto l'utente");
-} else if (userNumber < pcNumber) {
+} else if (userNumberSum < pcNumberSum) {
     console.log("Ha vinto il computer");
 } else {
     console.log("Parità");
