@@ -7,35 +7,49 @@ BONUS: far inserire 3 numeri all’utente, generare per il pc 3 numeri, e dopo a
 */
 
 // Dichiaro variabili
+const btnStart = document.querySelector(".btn-start");
+const btnReset = document.querySelector(".btn-reset");
+const userNumberOneElement = document.getElementById("user-number-one");
+const userNumberTwoElement = document.getElementById("user-number-two");
+const userNumberThreeElement = document.getElementById("user-number-three");
 let pcNumberSum = 0;
 let userNumberSum = 0;
 
-// Genero i tre numeri
-for (let i = 1; i <= 3; i++) {
+// Creo event listener - pulsante "Visualizza il vincitore"
+btnStart.addEventListener("click", function () {
 
-    // Chiedo i numeri all'utente
-    const userNumber = parseInt(prompt("Inserisci il " + i + " numero da 1 a 6"));
-    if (isNaN(userNumber) || userNumber < 1 || userNumber > 6) {
-        alert("Inserisci un numero corretto");
-        i--;
-    } else {
-        userNumberSum = userNumberSum + userNumber;
+    // Genero i tre numeri
+    for (let i = 1; i <= 3; i++) {
+
+        // Chiedo i numeri all'utente
+        const userNumberOne = parseInt(userNumberOneElement.value);
+        const userNumberTwo = parseInt(userNumberTwoElement.value);
+        const userNumberThree = parseInt(userNumberThreeElement.value);
+
+        userNumberSum = userNumberOne + userNumberTwo + userNumberThree;
+
+        // Genero i tre numeri del computer
+        const pcNumber = Math.floor(Math.random() * (6 - 1)) + 1;
+        pcNumberSum = pcNumberSum + pcNumber;
     }
 
-    // Genero i tre numeri del computer
-    const pcNumber = Math.floor(Math.random() * (6 - 1)) + 1;
-    pcNumberSum = pcNumberSum + pcNumber;
-}
+    const winner = document.querySelector(".winner");
 
-console.log("numero utente " + userNumberSum);
-console.log("numero pc " + pcNumberSum);
+    // Confronto i due numeri per stabilire il vincitore
+    if (userNumberSum > pcNumberSum) {
+        document.querySelector(".winner").innerHTML = "Hai vinto";
+    } else if (userNumberSum < pcNumberSum) {
+        document.querySelector(".winner").innerHTML = "Ha vinto il computer";
+    } else {
+        document.querySelector(".winner").innerHTML = "Parità";
+    }
 
+    // Aggiungo le classi al risultato
+    winner.classList.add("border", "rounded-4");
+})
 
-// Confronto i due numeri per stabilire il vincitore
-if (userNumberSum > pcNumberSum) {
-    console.log("Ha vinto l'utente");
-} else if (userNumberSum < pcNumberSum) {
-    console.log("Ha vinto il computer");
-} else {
-    console.log("Parità");
-}
+// Creo event listener - pulsante "Reset"
+btnReset.addEventListener("click", function () {
+    // Ricarico la pagina
+    location.reload();
+})

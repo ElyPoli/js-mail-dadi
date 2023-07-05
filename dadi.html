@@ -15,6 +15,35 @@
 </head>
 
 <body>
+    <main class="bg-primary vh-100 d-flex align-items-center justify-content-center">
+        <div class="container text-white text-center">
+            <h1 class="text-uppercase fw-bold m-0 pb-4">Il gioco dei dadi</h1>
+            <div class="border rounded-4 pt-4">
+                <h3 class="pt-2 pb-2 text-white">Inserisci qui sotto 3 numeri da 1 a 6:</h3>
+                <!-- Form da compilare -->
+                <div class="pt-3">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <label for="user-number-one" class="form-label fs-4 pe-3">Inserisci il 1° numero</label>
+                        <input type="text" class="form-control w-25" id="user-number-one">
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <label for="user-number-two" class="form-label fs-4 pe-3">Inserisci il 2° numero</label>
+                        <input type="text" class="form-control w-25" id="user-number-two">
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <label for="user-number-three" class="form-label fs-4 pe-3">Inserisci il 3° numero</label>
+                        <input type="text" class="form-control w-25" id="user-number-three">
+                    </div>
+                    <button class="btn btn-primary mt-3 fs-5 mb-4 btn-start">Visualizza il vincitore</button>
+                    <button class="btn btn-primary mt-3 fs-5 mb-4 btn-reset">Reset</button>
+                </div>
+            </div>
+            <!-- Vincitore -->
+            <div class="mt-4">
+                <p class="fs-4 fw-bold winner pt-2 pb-2 m-0"></p>
+            </div>
+        </div>
+    </main>
 
     <!-- Custom Js -->
     <script src="js/dadi.js"></script>
