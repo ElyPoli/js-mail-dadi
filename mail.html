@@ -23,11 +23,16 @@
                 <!-- Form da compilare -->
                 <div class="pt-3">
                     <div class="d-flex justify-content-center align-items-center mb-3">
-                        <label class="form-label fs-4 pe-3">Inserisci la tua e-mail:</label>
-                        <input type="email" class="form-control w-25">
+                        <label for="exampleInputEmail1" class="form-label fs-4 pe-3">Inserisci la tua e-mail:</label>
+                        <input type="email" class="form-control w-25 user-email" id="exampleInputEmail1">
                     </div>
-                    <button class="btn btn-primary mt-3 fs-5 mb-4">Cerca</button>
+                    <button class="btn btn-primary mt-3 fs-5 mb-4 btn-find">Cerca</button>
+                    <button class="btn btn-primary mt-3 fs-5 mb-4 btn-reset">Reset</button>
                 </div>
+            </div>
+            <!-- Risultato della ricerca -->
+            <div class="mt-4">
+                <p class="fs-4 fw-bold find-result pt-2 pb-2 m-0"></p>
             </div>
         </div>
     </main>
