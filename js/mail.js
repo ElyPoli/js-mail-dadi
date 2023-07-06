@@ -22,6 +22,8 @@ btnFind.addEventListener("click", function () {
 
         if (emailList[i] === userEmail) {
             emailFind = true;
+            // Se trovo la mail esco dal for
+            break;
         }
     }
 
@@ -42,8 +44,6 @@ btnFind.addEventListener("click", function () {
 
 // Creo event listener - pulsante "Reset"
 btnReset.addEventListener("click", function () {
-
     // Ricarico la pagina
     location.reload();
-
 })

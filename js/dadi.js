@@ -18,17 +18,21 @@ let userNumberSum = 0;
 // Creo event listener - pulsante "Visualizza il vincitore"
 btnStart.addEventListener("click", function () {
 
-    // Genero i tre numeri
+    // Memorizzo i numeri dell'utente
+    const userNumberOne = parseInt(userNumberOneElement.value);
+    const userNumberTwo = parseInt(userNumberTwoElement.value);
+    const userNumberThree = parseInt(userNumberThreeElement.value);
+
+    // Controllo i numeri inseriti dall'utente
+    if ((userNumberOne < 0) || (userNumberOne > 6) || (isNaN(userNumberOne)) || (userNumberTwo < 0) || (userNumberTwo > 6) || (isNaN(userNumberTwo)) || (userNumberThree < 0) || (userNumberThree > 6) || (isNaN(userNumberThree))) {
+        alert("Si è verificato un errore. Rinserisci i numeri correttamente");
+        location.reload();
+    }
+
+    userNumberSum = userNumberOne + userNumberTwo + userNumberThree;
+
+    // Genero i tre numeri del computer
     for (let i = 1; i <= 3; i++) {
-
-        // Chiedo i numeri all'utente
-        const userNumberOne = parseInt(userNumberOneElement.value);
-        const userNumberTwo = parseInt(userNumberTwoElement.value);
-        const userNumberThree = parseInt(userNumberThreeElement.value);
-
-        userNumberSum = userNumberOne + userNumberTwo + userNumberThree;
-
-        // Genero i tre numeri del computer
         const pcNumber = Math.floor(Math.random() * (6 - 1)) + 1;
         pcNumberSum = pcNumberSum + pcNumber;
     }
@@ -37,15 +41,18 @@ btnStart.addEventListener("click", function () {
 
     // Confronto i due numeri per stabilire il vincitore
     if (userNumberSum > pcNumberSum) {
-        document.querySelector(".winner").innerHTML = "Hai vinto";
+        document.querySelector(".winner").innerHTML = "Hai vinto! Hai totalizzato " + userNumberSum + " mentre il computer ha totalizzato " + pcNumberSum;
     } else if (userNumberSum < pcNumberSum) {
-        document.querySelector(".winner").innerHTML = "Ha vinto il computer";
+        document.querySelector(".winner").innerHTML = "Hai perso. Hai totalizzato " + userNumberSum + " mentre il computer ha totalizzato " + pcNumberSum;
     } else {
-        document.querySelector(".winner").innerHTML = "Parità";
+        document.querySelector(".winner").innerHTML = "Parità. Hai totalizzato " + userNumberSum + " e anche il computer ha totalizzato " + pcNumberSum;
     }
 
     // Aggiungo le classi al risultato
     winner.classList.add("border", "rounded-4");
+
+    // Messaggio di ricaricare la pagina
+    document.querySelector(".play-again").innerHTML = "Clicca sul pulsante Reset per giocare di nuovo";
 })
 
 // Creo event listener - pulsante "Reset"
