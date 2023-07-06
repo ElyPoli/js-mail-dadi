@@ -23,7 +23,7 @@ btnFind.addEventListener("click", function () {
         if (emailList[i] === userEmail) {
             emailFind = true;
             // Se trovo la mail esco dal for
-            break;
+            i = emailList.length;
         }
     }
 
